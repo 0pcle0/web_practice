@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/css template.css') }}"
+</head>
+<body>
+<section class="notice">
+  <div class="page-title">
+        <div class="container">
+            <h3>게시판</h3>
+        </div>
+    </div>
+
+    <!-- board seach area -->
+    <div id="board-search">
+        <div class="container">
+            <div class="search-window">
+                </form>
+            </div>
+        </div>
+    </div>
+   
+  <!-- board list area -->
+    <div id="board-list">
+        <div class="container">
+            <table class="board-table">
+                <thead>
+                <tr>
+                    <th scope="col" class="th-num">제목</th>
+                    <th scope="col" class="th-title">{{title}}</th>
+                    <th scope="col" class="th-date">{{date}}</th>
+                </tr>
+                </thead>
+                <tbody>
+		<td></td>
+		<td class="td-body">{{body}}</td>
+		<td></td>
+		</tbody>
+            </table>
+	   <button class="btn btn-dark3" onclick="location.href='/'">처음으로</button>
+           <form action="/delete/{{id}}" method="POST"><input type="submit" class="btn btn-dark2" value="삭제"></form>
+           <button class="btn btn-dark1" onclick="location.href='/update/{{id}}'">수정</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

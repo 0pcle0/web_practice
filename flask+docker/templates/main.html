@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/css template.css') }}"
+</head>
+<body>
+<section class="notice">
+  <div class="page-title">
+        <div class="container">
+            <h3> <a href='/'>게시판</a></h3>
+        </div>
+    </div>
+
+    <!-- board seach area -->
+    <div id="board-search">
+        <div class="container">
+            <div class="search-window">
+                <form action="/search/" method="POST">
+                    <div class="search-wrap">
+                        <label for="search" class="blind">게시판 내용 검색</label>
+			<select class="select" name="searchtype"> 
+			<option value="title"> 제목
+			<option value="body"> 내용
+			<option value="titlebody"> 제목+내용
+			</select>
+                        <input id="search" type="search" name="search" placeholder="검색어를 입력해주세요.">
+                        <input type="submit" class="btn btn-dark">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+  <!-- board list area -->
+    <div id="board-list">
+        <div class="container">
+            <table class="board-table">
+                <thead>
+                <tr>
+                    <th scope="col" class="th-num">번호</th>
+                    <th scope="col" class="th-title">제목</th>
+		    <th scope="col" class="th-title">작성자</th>
+                    <th scope="col" class="th-date">작성일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+		    {% for obj in writ %}
+                    <td>{{obj.id}}</td>
+                    <th>
+                      <a href="/read/{{obj.id}}">{{obj.title}}</a>
+		    </th>
+                    <td>{{obj.user}}</td>
+                    <td>{{obj.date}}</td>
+		</tr>
+		{% endfor %}
+                </tbody>
+            </table>
+	   <center>
+	   <button class="btn btn-dark" onclick="location.href='/create/'">글쓰기</button>
+	   <center>
+        </div>
+    </div>
+</section>
+</body>
+</html>
